@@ -1,9 +1,9 @@
-Bootstrap: shub
-From: CreRecombinase/docker-eigenh5
+Bootstrap: docker
+
+From: pytorch/pytorch:1.0.1-cuda10.0-cudnn7-runtime
+
 
 %post
-    apt-get update -y -qq	
-    apt-get install -y --allow-unauthenticated r-cran-tidyverse file libzmq3-dev r-cran-rsqlite
-    install2.r --deps TRUE glue fs
-    R -e "BiocManager::install('graph');devtools::install_github('stephenslab/ldshrink','refactor')"
-    installGithub.r --deps TRUE	CreRecombinase/RSSp CreRecombinase/EigenH5@chunkreader ropensci/drake 
+    . /opt/conda/etc/profile.d/conda.sh
+    conda activate
+    /opt/conda/bin/conda install -c bioconda selene-sdk
